@@ -1,16 +1,24 @@
+import { Route, Routes } from 'react-router-dom';
+import { HomePage } from './pages/Home/Home';
+import { CatalogPage } from './pages/Catalog/Catalog';
+import { FavoritePage } from './pages/Favorite/Favorite';
+
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+<Routes>
+      <Route
+        path="/" element={<HomePage />}/>
+        <Route
+          path="/catalog"
+          element={<CatalogPage/>
+          }
+        />
+        <Route
+          path="/favorites"
+          element={<FavoritePage/>
+          }
+        />
+    </Routes>
   );
 };
