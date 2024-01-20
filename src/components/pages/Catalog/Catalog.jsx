@@ -1,10 +1,11 @@
 import { CatalogList } from "components/CatalogList/CatalogList";
-import Dropdown from "components/CatalogSettings/CatalogSettings";
+// import { Dropdown } from "components/CatalogSettings/CatalogSettings";
+
 
 export function CatalogPage(){
     return (
         <div>
-            <Dropdown/>
+            {/* <Dropdown/> */}
             <CatalogList />
         </div>
     )

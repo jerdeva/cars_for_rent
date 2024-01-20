@@ -1,74 +1,87 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCars } from 'components/redux/operations';
-import { selectCars, selectError, selectIsLoading } from 'components/redux/selectors';
+import {
+  selectCars,
+  selectError,
+  selectIsLoading,
+} from 'components/redux/selectors';
 import { CarInfo } from 'components/CarInfo/CarInfo';
-import { List } from './CatalogList.styled';
-
+import { List, Container } from './CatalogList.styled';
 
 export function CatalogList() {
-    const selectedCars = useSelector(selectCars);
-    const error = useSelector(selectError);
-    const isLoading = useSelector(selectIsLoading);
+  const selectedCars = useSelector(selectCars);
+  const error = useSelector(selectError);
+  const isLoading = useSelector(selectIsLoading);
 
-      const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(fetchCars());
-    }, [dispatch])
+  const [initialCarsCount, setInitialCarsCount] = useState(12);
+  const [totalCarsCount, setTotalCarsCount] = useState(24);
 
+  useEffect(() => {
+    dispatch(fetchCars()).then(data => {
+      setTotalCarsCount(data.length);
+    });
+  }, [dispatch]);
 
+  const loadMore = () => {
+    setInitialCarsCount(prevCount => prevCount + 12);
+  };
 
-    return (
+  return (
+    <Container>
       <List>
         {isLoading && !error ? (
-          <p>please waite</p>
-        ) : selectedCars.length === 0 && !error ? (
-          <p>The Phonebook is empty. Add your contacts.</p>
+          <p>Please wait...</p>
         ) : (
-          selectedCars.map(
-            ({
-              id,
-              year,
-              make,
-              model,
-              type,
-              img,
-              description,
-              fuelConsumption,
-              engineSize,
-              accessories,
-              functionalities,
-              rentalPrice,
-              rentalCompany,
-              address,
-              rentalConditions,
-              mileage,
-            }) => (
-              <CarInfo
-                key={id}
-                car={{
-                  id,
-                  year,
-                  make,
-                  model,
-                  type,
-                  img,
-                  description,
-                  fuelConsumption,
-                  engineSize,
-                  accessories,
-                  functionalities,
-                  rentalPrice,
-                  rentalCompany,
-                  address,
-                  rentalConditions,
-                  mileage,
-                }}
-              />
+          selectedCars
+            .slice(0, initialCarsCount)
+            .map(
+              ({
+                id,
+                year,
+                make,
+                model,
+                type,
+                img,
+                description,
+                fuelConsumption,
+                engineSize,
+                accessories,
+                functionalities,
+                rentalPrice,
+                rentalCompany,
+                address,
+                rentalConditions,
+                mileage,
+              }) => (
+                <CarInfo
+                  key={id}
+                  car={{
+                    id,
+                    year,
+                    make,
+                    model,
+                    type,
+                    img,
+                    description,
+                    fuelConsumption,
+                    engineSize,
+                    accessories,
+                    functionalities,
+                    rentalPrice,
+                    rentalCompany,
+                    address,
+                    rentalConditions,
+                    mileage,
+                  }}
+                />
+              )
             )
-          )
         )}
       </List>
-    );
+      <button onClick={loadMore}>Load more</button>
+    </Container>
+  );
 }
