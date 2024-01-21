@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchCars } from './operations';
 
-
 const initialState = {
+  allItems: [],
   items: [],
   isLoading: false,
   error: null,
@@ -11,7 +11,20 @@ const initialState = {
 const carsSlice = createSlice({
   name: 'cars',
   initialState: initialState,
-  reducers: {},
+  reducers: {
+    carFilterSet(state, { payload }) {
+      state.items = state.allItems.filter(
+        car =>
+          car.make === payload.selectedCarBrand &&
+          car.rentalPrice === '$' + payload.selectedPrice &&
+          car.mileage <= payload.selectedKmTo &&
+          car.mileage >= payload.selectedKmFrom
+      );
+    },
+    carFilterReset(state, { payload }) {
+      state.items = state.allItems;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(fetchCars.pending, state => {
@@ -25,8 +38,12 @@ const carsSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         state.items = action.payload;
+        state.allItems = action.payload;
       });
   },
 });
 
-export const { reducer: carsReducer } = carsSlice;
+const carsReducer = carsSlice.reducer;
+export default carsReducer;
+
+export const { carFilterSet, carFilterReset } = carsSlice.actions;

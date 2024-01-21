@@ -1,19 +1,38 @@
 import styled from 'styled-components';
 
 export const List = styled.ul`
-  list-style: none;
   display: flex;
   flex-wrap: wrap;
-  margin: 0;
-  padding: 0;
-  margin-top: -50px;
-  margin-left: -29px;
+  row-gap: 20px;
+  column-gap: 15px;
+  margin-bottom: 100px;
+
+  @media screen and (min-width: 768px) {
+    row-gap: 30px;
+    column-gap: 20px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    row-gap: 50px;
+    column-gap: 29px;
+  }
 `;
 
-export const Container = styled.div`
-width: 1440px;
-margin: 0 auto;
-`
+export const LoadMore = styled.p`
+  display: ${props => props.display || 'block'};
+  color: var(--color-text-loadmore);
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration-line: underline;
+  margin: 0 auto;
+  padding: 15px;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    color: var(--color-text-loadmore-hover);
+  }
+`;
 
 export const BTN = styled.button`
   font-family: 'Manrope Variable', sans-serif;

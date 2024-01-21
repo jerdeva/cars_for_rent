@@ -1,12 +1,16 @@
 import { CatalogList } from "components/CatalogList/CatalogList";
-// import { Dropdown } from "components/CatalogSettings/CatalogSettings";
+import { Filters } from "components/Filters/Filters";
+import { Section,Container } from "../Page.styled";
 
 
 export function CatalogPage(){
     return (
-        <div>
-            {/* <Dropdown/> */}
-            <CatalogList />
-        </div>
+        <Section>
+            <Container $top='50px' >
+                <Filters />
+                <CatalogList />
+            </Container>
+
+        </Section>
     )
 }

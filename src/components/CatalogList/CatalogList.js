@@ -7,7 +7,7 @@ import {
   selectIsLoading,
 } from 'components/redux/selectors';
 import { CarInfo } from 'components/CarInfo/CarInfo';
-import { List, Container, BTN } from './CatalogList.styled';
+import { List, LoadMore } from './CatalogList.styled';
 
 export function CatalogList() {
   const selectedCars = useSelector(selectCars);
@@ -30,7 +30,7 @@ export function CatalogList() {
   };
 
   return (
-    <Container>
+    <>
       <List>
         {isLoading && !error ? (
           <p>Please wait...</p>
@@ -81,7 +81,7 @@ export function CatalogList() {
             )
         )}
       </List>
-      <BTN onClick={loadMore}>Load more</BTN>
-    </Container>
+      <LoadMore onClick={loadMore}>Load more</LoadMore>
+    </>
   );
 }
