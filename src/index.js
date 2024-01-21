@@ -6,6 +6,8 @@ import { Provider } from 'react-redux';
 import './index.css';
 import { store } from 'components/redux/store';
 
+import '@fontsource-variable/manrope';
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>

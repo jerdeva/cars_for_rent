@@ -7,7 +7,7 @@ import {
   selectIsLoading,
 } from 'components/redux/selectors';
 import { CarInfo } from 'components/CarInfo/CarInfo';
-import { List, Container } from './CatalogList.styled';
+import { List, Container, BTN } from './CatalogList.styled';
 
 export function CatalogList() {
   const selectedCars = useSelector(selectCars);
@@ -81,7 +81,7 @@ export function CatalogList() {
             )
         )}
       </List>
-      <button onClick={loadMore}>Load more</button>
+      <BTN onClick={loadMore}>Load more</BTN>
     </Container>
   );
 }

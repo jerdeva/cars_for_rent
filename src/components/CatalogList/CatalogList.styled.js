@@ -14,3 +14,7 @@ export const Container = styled.div`
 width: 1440px;
 margin: 0 auto;
 `
+
+export const BTN = styled.button`
+  font-family: 'Manrope Variable', sans-serif;
+`;

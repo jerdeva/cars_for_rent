@@ -3,6 +3,9 @@ import {
   ModelSpan,
   MakerModelYearPriceWrap,
   Item,
+  BTN,
+  BtnDiv,
+  Paragrapher,
 } from './CarInfo.styled';
 
 
@@ -15,18 +18,20 @@ export function CarInfo({ car }) {
     <Item>
       <Photo src={car.img} alt="car" />
       <MakerModelYearPriceWrap>
-        <p>
+        <Paragrapher>
           {car.make} <ModelSpan>{car.model}</ModelSpan>, {car.year}
-        </p>
+        </Paragrapher>
         <p>{car.rentalPrice}</p>
       </MakerModelYearPriceWrap>
-      <p>
-        {country} | {city} | {car.rentalCompany} 
-      </p>
-      <p>
+      <Paragrapher>
+        {country} | {city} | {car.rentalCompany}
+      </Paragrapher>
+      <Paragrapher>
         {car.type} | {car.model} | {car.functionalities[1]}
-      </p>
-      <button>Learn more</button>
+      </Paragrapher>
+      <BtnDiv>
+        <BTN>Learn more</BTN>
+      </BtnDiv>
     </Item>
   );
 }
