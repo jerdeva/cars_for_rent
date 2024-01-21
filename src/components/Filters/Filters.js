@@ -4,15 +4,13 @@ import {
   selectFilterCarBrands,
 } from 'components/redux/selectors';
 import Select from 'react-select';
-import { carFilterSet, carFilterReset } from '../redux/carsSlice';
+import { carFilterSet } from '../redux/carsSlice';
 import {
   filterSelectCarBrandSet,
   filterSelectPriceSet,
   filterSelectKmFromSet,
   filterSelectKmToSet,
-  filterReset,
 } from '../redux/filter/filterSlice';
-import { makeComaInMileage } from 'components/service/service';
 import { Report } from 'notiflix/build/notiflix-report-aio';
 import {
   Form,

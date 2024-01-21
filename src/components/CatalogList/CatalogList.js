@@ -23,7 +23,7 @@ export function CatalogList() {
     dispatch(fetchCars()).then(data => {
       setTotalCarsCount(data.length);
     });
-  }, [dispatch]);
+  }, [dispatch, totalCarsCount]);
 
   const loadMore = () => {
     setInitialCarsCount(prevCount => prevCount + 12);

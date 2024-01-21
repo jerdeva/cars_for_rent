@@ -1,5 +1,5 @@
 import { Container, Section } from '../pages/Page.styled';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {HeaderStyled,MainTitle,NavStyled,StyledNavLink} from './Header.styled'
 
 
