@@ -40,6 +40,8 @@ export const Filters = () => {
     pricesArray.push({ value: index, label: index });
   }
 
+  
+
   const onClickSearch = () => {
     if (
       (filter.selectedKmFrom.length > 0 &&

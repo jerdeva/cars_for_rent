@@ -14,6 +14,7 @@ import {
   DescriptItem,
 } from './CarInfo.styled';
 import heartClear from '../icons/heartClear.svg';
+import heartBlue from '../icons/heartBlue.svg'
 import React, { useState } from 'react';
 import { Modal } from 'components/ModalLearnMore/Modal';
 import { ModalInfo } from 'components/ModalLearnMore/ModalInfo';
@@ -45,6 +46,8 @@ export function CarInfo({ car, index }) {
 
   const [isCarFavorite, setIsCarFavorite] = useState(false);
   const [showModal, setShowModal] = useState(false);
+    const [isIcon1, setIsIcon1] = useState(true);
+
 
   useEffect(() => {
     if (favoriteCarsId?.some(car => car.id === id)) {
@@ -64,6 +67,9 @@ export function CarInfo({ car, index }) {
     setShowModal(prevState => !prevState);
   };
 
+    const toggleIcon = () => {
+      setIsIcon1(!isIcon1);
+    };
 
   return (
     <Item key={id}>
@@ -75,17 +81,21 @@ export function CarInfo({ car, index }) {
       <CarCard>
         <ImgWrap>
           <Photo src={img} alt="car" />
-          <Heart
-            src={heartClear}
-            alt="heart"
-            onClick={onClickHeart}
-            fill={isCarFavorite ? 'var(--color-button)' : 'none'}
-            stroke={
-              isCarFavorite
-                ? 'var(--color-button)'
-                : 'var(--color-text-button-and-back)'
-            }
-          />
+          <div onClick={toggleIcon}>
+            {isIcon1 ? (
+              <Heart
+                src={heartClear}
+                alt="heart"
+                onClick={onClickHeart}
+              />
+            ) : (
+              <Heart
+                src={heartBlue}
+                alt="heart"
+                onClick={onClickHeart}
+              />
+            )}
+          </div>
         </ImgWrap>
         <DescriptionWrap>
           <TitleWrap>
