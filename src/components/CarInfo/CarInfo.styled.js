@@ -1,6 +1,3 @@
-
-
-
 import styled from 'styled-components';
 
 export const Item = styled.li`
@@ -51,12 +48,12 @@ export const Photo = styled.img`
 `;
 
 export const MakerModelYearPriceWrap = styled.div`
-display: flex;
-justify-content: space-between;
-`
+  display: flex;
+  justify-content: space-between;
+`;
 
 export const ModelSpan = styled.span`
-  color: #3470FF;
+  color: #3470ff;
 `;
 
 export const BtnDiv = styled.div`
@@ -68,7 +65,7 @@ export const BtnDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-`
+`;
 
 export const BTN = styled.button`
   display: flex;
@@ -89,7 +86,6 @@ export const BTN = styled.button`
     background: var(--color-button-hover);
   }
 `;
-
 
 export const CarCard = styled.div`
   display: flex;
@@ -137,7 +133,6 @@ export const Heart = styled.img`
   width: 18px;
   height: 18px;
 `;
-
 
 export const DescriptionWrap = styled.div`
   display: flex;
@@ -203,6 +198,3 @@ export const DescriptItem = styled.li`
     }
   }
 `;
-
-
-
